@@ -73,11 +73,26 @@
   <script id="cms-template" type="text/x-handlebars-template">
     <div id="cmspage">
       <div>Portfolio CMS</div>
-      {{#each projects}}
         <div>
-          <p>{{title}}</p>
+          <table>
+            <tr>
+              <th>small image</th>
+              <th>large image</th>
+              <th>title</th>
+              <th>website</th>
+              <th>description</th>
+            </tr>
+            {{#each projects}}
+            <tr>
+              <td>{{imageURL_sm}}</td>
+              <td>{{imageURL_lg}}</td>
+              <td>{{title}}</td>
+              <td>{{siteURL}}</td>
+              <td>{{description}}</td>
+            </tr>
+            {{/each}}
+          </table>
         </div>
-      {{/each}}
       </div>
     </div>
   </script>
