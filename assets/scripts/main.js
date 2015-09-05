@@ -28,6 +28,7 @@ $('#login-button').on('click', function(event) {
 
 $('#login').on('click', function() {
   login();
+  getProjects();
   showPage.cmsPage();
 });
 

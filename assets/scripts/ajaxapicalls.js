@@ -19,3 +19,15 @@ var login = function() {
     alert('Check your input values.');
   });
 };
+
+var getProjects = function() {
+  $.ajax({
+    url: server + '/projects/',
+    method: 'GET'
+  }).done(function(response){
+    console.log('projects = ' + response.projects);
+    $('#cmsResults').html(View.cmsIndexHTML({projects: response.projects}));
+  }).fail(function(error){
+    console.log(error);
+  });
+};
