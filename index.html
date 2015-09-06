@@ -50,6 +50,22 @@
 
   <div id="cmspage">
     <div id="cmsResults"></div>
+    <div id="projectForm">
+      <p class="centerHeader">Submit a project:</p>
+      <label for="imageURL_sm">Small Image URL:</label>
+      <input type="text" name="imageURL_sm" class="projectForm" id ="project-imageURL_sm">
+      <label for="imageURL_lg">Large Image URL:</label>
+      <input type="text" name="imageURL_lg" class="projectForm" id ="project-imageURL_lg">
+      <label for="title">Title:</label>
+      <input type="text" name="title" class="projectForm" id ="project-title">
+      <label for="siteURL">Site URL:</label>
+      <input type="text" name="siteURL" class="projectForm" id ="project-siteURL">
+      <label for="codeURL">Code URL:</label>
+      <input type="text" name="codeURL" class="projectForm" id ="project-codeURL">
+      <label for="body">Description:</label>
+      <textarea rows="4" cols="50" name="description" class="projectForm" id="project-description"></textarea>
+      <button id="project-submit">Submit</button>
+    </div>
   </div>
 
 <!--
@@ -71,35 +87,47 @@
 -->
 
   <script id="cms-template" type="text/x-handlebars-template">
-    <div id="cmspage">
-      <div>Portfolio CMS</div>
-        <div>
-          <table>
-            <tr>
-              <th>small image</th>
-              <th>large image</th>
-              <th>title</th>
-              <th>website</th>
-              <th>description</th>
-            </tr>
-            {{#each projects}}
-            <tr>
-              <td>{{imageURL_sm}}</td>
-              <td>{{imageURL_lg}}</td>
-              <td>{{title}}</td>
-              <td>{{siteURL}}</td>
-              <td>{{description}}</td>
-            </tr>
-            {{/each}}
-          </table>
-        </div>
+    <div id="appended-projects">
+      {{#each projects}}
+      <div class="entire-project" data-id="{{this.id}}">
+        <p>{{this.id}}</p>
+        <p>{{imageURL_sm}}</p>
+        <p>{{imageURL_lg}}</p>
+        <p>{{title}}</p>
+        <p>{{siteURL}}</p>
+        <p>{{codeURL}}</p>
+        <p>{{description}}</p>
       </div>
+      {{/each}}
     </div>
   </script>
 
 <!--
 ************************************************
 * END: CMS template
+************************************************
+-->
+
+<!--
+************************************************
+* BEGIN: Projects template
+************************************************
+-->
+
+  <script id="projects" type="text/x-handlebars-template">
+    <div class="entire-project" data-id="{{project.id}}">
+      <p>{{project.imageURL_sm}}</p>
+      <p>{{project.imageURL_lg}}</p>
+      <p>{{project.title}}</p>
+      <p>{{project.siteURL}}</p>
+      <p>{{project.codeURL}}</p>
+      <p>{{project.description}}</p>
+    </div>
+  </script>
+
+<!--
+************************************************
+* END: Projects template
 ************************************************
 -->
 

@@ -32,6 +32,10 @@ $('#login').on('click', function() {
   showPage.cmsPage();
 });
 
+$('#project-submit').on('click', function() {
+  createProject();
+});
+
 //////////////////////////////////////////////
 // END: click handlers
 //////////////////////////////////////////////
