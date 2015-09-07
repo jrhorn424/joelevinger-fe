@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
   <title>Joe Levinger's Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -12,9 +13,24 @@
 ************************************************
 -->
 
+<!--   <strong>CSS3</strong>
+  <div class="imgwrap">
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+    <img src="http://3.bp.blogspot.com/-uZ6diSn3Dys/T21Da-5HGXI/AAAAAAAACYY/d8WwcPgRazQ/s1600/dte-big2.png" alt="DTE" />
+  </div> -->
+
   <div id="homepage">
     <button id="login-button">Login</button>
+    <div id="homepageResults"></div>
   </div>
+
 
 <!--
 ************************************************
@@ -78,6 +94,28 @@
 <!--
 ************************************************
 * BEGIN: templates
+************************************************
+-->
+
+<!--
+************************************************
+* BEGIN: Home page template
+************************************************
+-->
+
+  <script id="homepage-template" type="text/x-handlebars-template">
+    <div id="homepage-projects">
+      {{#each projects}}
+      <div class="entire-homepage-project" data-id="{{this.id}}">
+        <p data-id="{{this.id}}"><img src="assets/{{this.imageURL_sm}}"</p>
+      </div>
+      {{/each}}
+    </div>
+  </script>
+
+<!--
+************************************************
+* END: Home page template
 ************************************************
 -->
 

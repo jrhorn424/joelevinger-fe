@@ -27,6 +27,7 @@ var getProjects = function() {
   }).done(function(response){
     console.log('projects = ' + response.projects);
     $('#cmsResults').html(View.cmsIndexHTML({projects: response.projects}));
+    $('#homepageResults').html(View.homepageIndexHTML({projects: response.projects}));
   }).fail(function(error){
     console.log(error);
   });
