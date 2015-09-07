@@ -136,3 +136,19 @@ $('#cmsResults').on('click', '#edit-project-submit', function(event) {
 //////////////////////////////////////////////
 // END: hitting the update's submit button
 //////////////////////////////////////////////
+
+//////////////////////////////////////////////
+// BEGIN: hitting the update's cancel button
+//////////////////////////////////////////////
+
+$('#cmsResults').on('click', '#edit-project-cancel', function(event) {
+  event.preventDefault();
+  var $project = $(this).closest('.entire-project');
+
+  $project.find('.edit-form').hide();
+  $project.find('.project-show').show();
+});
+
+//////////////////////////////////////////////
+// END: hitting the update's cancel button
+//////////////////////////////////////////////
