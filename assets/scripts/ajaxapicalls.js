@@ -33,6 +33,32 @@ var getProjects = function() {
   });
 };
 
+var retrieveJavaScript = function() {
+  $.ajax({
+    url: server + '/projects/',
+    method: 'GET'
+  }).done(function(response){
+    var js = $.grep(response.projects, function(e) { return e.category === 'js'; });
+    console.log('projects = ' + js);
+    $('#homepageResults').html(View.homepageIndexHTML({projects: js}));
+  }).fail(function(error){
+    console.log(error);
+  });
+};
+
+var retrieveRuby = function() {
+  $.ajax({
+    url: server + '/projects/',
+    method: 'GET'
+  }).done(function(response){
+    var ruby = $.grep(response.projects, function(e) { return e.category === 'ruby'; });
+    console.log('projects = ' + ruby);
+    $('#homepageResults').html(View.homepageIndexHTML({projects: ruby}));
+  }).fail(function(error){
+    console.log(error);
+  });
+};
+
 var createProject = function() {
   console.log('in the create function');
   $.ajax(server + '/projects/', {
@@ -45,7 +71,8 @@ var createProject = function() {
         title: $('#project-title').val(),
         siteURL: $('#project-siteURL').val(),
         codeURL: $('#project-codeURL').val(),
-        description: $('#project-description').val()
+        description: $('#project-description').val(),
+        category: $('#project-category').val(),
       }
     }),
     dataType: 'json',

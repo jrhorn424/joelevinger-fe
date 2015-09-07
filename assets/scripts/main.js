@@ -37,6 +37,21 @@ $('#project-submit').on('click', function() {
   createProject();
 });
 
+$('#js').on('click', function() {
+  console.log('in the js click handler');
+  retrieveJavaScript();
+});
+
+$('#ruby').on('click', function() {
+  console.log('in the ruby click handler');
+  retrieveRuby();
+});
+
+$('#all').on('click', function() {
+  console.log('in the all click handler');
+  getProjects();
+});
+
 //////////////////////////////////////////////
 // END: click handlers
 //////////////////////////////////////////////
@@ -87,6 +102,7 @@ $('#cmsResults').on('click', '.project-update', function(event) {
   $project.find('.edit-project-siteURL').val($project.find('.siteURL').text());
   $project.find('.edit-project-codeURL').val($project.find('.codeURL').text());
   $project.find('.edit-project-description').val($project.find('.description').text());
+  $project.find('.edit-project-category').val($project.find('.category').text());
   $project.find('.project-show').hide();
 });
 
@@ -112,7 +128,8 @@ $('#cmsResults').on('click', '#edit-project-submit', function(event) {
         imageURL_lg: $project.find('.edit-project-imageURL_lg').val(),
         siteURL: $project.find('.edit-project-siteURL').val(),
         codeURL: $project.find('.edit-project-codeURL').val(),
-        description: $project.find('.edit-project-description').val()
+        description: $project.find('.edit-project-description').val(),
+        category: $project.find('.edit-project-category').val()
       }
     }),
     headers: {
@@ -126,6 +143,7 @@ $('#cmsResults').on('click', '#edit-project-submit', function(event) {
     $project.find('.siteURL.project-show').html('').append(data.project.siteURL);
     $project.find('.codeURL.project-show').html('').append(data.project.codeURL);
     $project.find('.description.project-show').html('').append(data.project.description);
+    $project.find('.category.project-show').html('').append(data.project.category);
 
     $project.find('.edit-form').hide();
     $project.find('.project-show').show();
@@ -152,16 +170,4 @@ $('#cmsResults').on('click', '#edit-project-cancel', function(event) {
 
 //////////////////////////////////////////////
 // END: hitting the update's cancel button
-//////////////////////////////////////////////
-
-//////////////////////////////////////////////
-// BEGIN: Handlebars helper
-//////////////////////////////////////////////
-
-Handlebars.registerHelper('limit', function (arr, limit) {
-  return arr.slice(0, limit);
-});
-
-//////////////////////////////////////////////
-// END: Handlebars helper
 //////////////////////////////////////////////

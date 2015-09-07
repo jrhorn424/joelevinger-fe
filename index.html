@@ -28,6 +28,9 @@
 
   <div id="homepage">
     <button id="login-button">Login</button>
+      <div id="appnav">
+        <button id="all">All</button> <button id="js">JavaScript</button> <button id="ruby">Ruby on Rails</button>
+      </div>
     <div id="homepageResults"></div>
   </div>
 
@@ -69,17 +72,19 @@
     <div id="cmsResults"></div>
     <div id="projectForm">
       <p class="centerHeader">Submit a project:</p>
-      <label for="title">Title:</label>
+      <label for="title">TITLE:</label>
       <input type="text" name="title" class="projectForm" id ="project-title">
-      <label for="imageURL_sm">Small Image URL:</label>
+      <label for="category">CATEGORY:</label>
+      <input type="text" name="category" class="projectForm" id ="project-category">
+      <label for="imageURL_sm">SMALL IMAGE URL:</label>
       <input type="text" name="imageURL_sm" class="projectForm" id ="project-imageURL_sm">
-      <label for="imageURL_lg">Large Image URL:</label>
+      <label for="imageURL_lg">LARGE IMAGE URL:</label>
       <input type="text" name="imageURL_lg" class="projectForm" id ="project-imageURL_lg">
-      <label for="siteURL">Site URL:</label>
+      <label for="siteURL">SITE URL:</label>
       <input type="text" name="siteURL" class="projectForm" id ="project-siteURL">
-      <label for="codeURL">Code URL:</label>
+      <label for="codeURL">CODE URL:</label>
       <input type="text" name="codeURL" class="projectForm" id ="project-codeURL">
-      <label for="body">Description:</label>
+      <label for="body">DESCRIPTION:</label>
       <textarea rows="4" cols="50" name="description" class="projectForm" id="project-description"></textarea>
       <button id="project-submit">Submit</button>
     </div>
@@ -129,18 +134,41 @@
     <div id="appended-projects">
       {{#each projects}}
       <div class="entire-project" data-id="{{this.id}}">
-        <p class="project title project-show" data-id="{{this.id}}">TITLE: {{this.title}}</p>
-        <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
-        <p class="indent imageURL_sm project-show">SMALL IMAGE: {{this.imageURL_sm}}</p>
-        <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
-        <p class="indent imageURL_lg project-show">LARGE IMAGE: {{this.imageURL_lg}}</p>
-        <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
-        <p class="indent siteURL project-show">WEBSITE: {{this.siteURL}}</p>
-        <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
-        <p class="indent codeURL project-show">CODE REPO: {{this.codeURL}}</p>
-        <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
-        <p class="indent description project-show">DESCRIPTION: {{this.description}}</p>
-        <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
+        <p>
+          <span>TITLE: </span>
+          <span class="project title project-show" data-id="{{this.id}}">{{this.title}}</span>
+          <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
+        </p>
+        <p class="indent">
+          <span>CATEGORY: </span>
+          <span class="category project-show">{{this.category}}</span>
+          <input name="category" type="text" class="edit-form edit-project-category" style="display:none;">
+        </p>
+        <p class="indent">
+          <span>SMALL IMAGE: </span>
+          <span class="imageURL_sm project-show">{{this.imageURL_sm}}</span>
+          <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
+        </p>
+        <p class="indent">
+          <span>LARGE IMAGE: </span>
+          <span class="imageURL_lg project-show">{{this.imageURL_lg}}</span>
+          <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
+        </p>
+        <p class="indent">
+          <span>WEBSITE: </span>
+          <span class="siteURL project-show">{{this.siteURL}}</span>
+          <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
+        </p>
+        <p class="indent">
+          <span>CODE REPO: </span>
+          <span class="codeURL project-show">{{this.codeURL}}</span>
+          <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
+        </p>
+        <p class="indent">
+          <span>DESCRIPTION: </span>
+          <span class="description project-show">{{this.description}}</span>
+          <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
+        </p>
         <button id="edit-project-submit" style="display: none;" class="indent edit-form">Submit Edits</button>
         <button id="edit-project-cancel" style="display: none;" class="indent edit-form">Cancel</button>
         <a id="project-update" class="project-update" href="#">
@@ -168,17 +196,19 @@
 
   <script id="projects" type="text/x-handlebars-template">
     <div class="entire-project" data-id="{{project.id}}">
-      <p class="project title project-show" data-id="{{project.id}}">TITLE: {{project.title}}</p>
+      <p class="project title project-show" data-id="{{project.id}}">{{project.title}}</p>
       <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
-      <p class="indent imageURL_sm project-show">SMALL IMAGE: {{project.imageURL_sm}}</p>
+      <p class="indent category project-show">{{project.category}}</p>
+      <input name="category" type="text" class="edit-form edit-project-category" style="display:none;">
+      <p class="indent imageURL_sm project-show">{{project.imageURL_sm}}</p>
       <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
-      <p class="indent imageURL_lg project-show">LARGE IMAGE: {{project.imageURL_lg}}</p>
+      <p class="indent imageURL_lg project-show">{{project.imageURL_lg}}</p>
       <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
-      <p class="indent siteURL project-show">WEBSITE: {{project.siteURL}}</p>
+      <p class="indent siteURL project-show">{{project.siteURL}}</p>
       <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
-      <p class="indent codeURL project-show">CODE REPO: {{project.codeURL}}</p>
+      <p class="indent codeURL project-show">{{project.codeURL}}</p>
       <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
-      <p class="indent description project-show">DESCRIPTION: {{project.description}}</p>
+      <p class="indent description project-show">{{project.description}}</p>
       <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
       <button id="edit-project-submit" style="display: none;" class="edit-form">Submit Edits</button>
       <button id="edit-project-cancel" style="display: none;" class="edit-form">Cancel</button>

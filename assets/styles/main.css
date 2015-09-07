@@ -28,8 +28,16 @@
   opacity:1;
 }*/
 
+#homepage {
+  width: 100%;
+}
+
 #homepage-projects {
   margin: 0 auto;
+}
+
+#appnav {
+  text-align: center;
 }
 
 .entire-homepage-project {
