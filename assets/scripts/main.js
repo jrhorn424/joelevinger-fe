@@ -40,6 +40,32 @@ $('#project-submit').on('click', function() {
 // END: click handlers
 //////////////////////////////////////////////
 
+//////////////////////////////////////////////
+// BEGIN: delete a project
+//////////////////////////////////////////////
+
+$('#cmsResults').on('click', '.project-update-delete', function(event) {
+  event.preventDefault();
+  console.log('in the delete function');
+  var entireProjectElement = this.parentElement;
+  $.ajax(server + '/projects/' + $(this).data('id'), {
+    contentType: 'application/json',
+    processData: false,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + simpleStorage.get('token')
+    }
+  }).done(function() {
+    $(entireProjectElement).remove();
+  }).fail(function(jqxhr, textStatus, errorThrown) {
+    alert('Unable to delete a comment.');
+  });
+});
+
+//////////////////////////////////////////////
+// END: delete a project
+//////////////////////////////////////////////
+
 });
 
 //////////////////////////////////////////////

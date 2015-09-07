@@ -90,14 +90,20 @@
     <div id="appended-projects">
       {{#each projects}}
       <div class="entire-project" data-id="{{this.id}}">
-        <p>{{this.id}}</p>
         <p>{{imageURL_sm}}</p>
         <p>{{imageURL_lg}}</p>
         <p>{{title}}</p>
         <p>{{siteURL}}</p>
         <p>{{codeURL}}</p>
         <p>{{description}}</p>
+        <a>
       </div>
+      <a id="project-update" class="project-update" href="#">
+        <p class="displayDeleteUpdateLinks project-show">edit</p>
+      </a>
+      <a data-id="{{this.id}}"class="project-update-delete" href="#">
+        <p class="displayDeleteUpdateLinks project-show">delete</p>
+      </a>
       {{/each}}
     </div>
   </script>
@@ -122,6 +128,12 @@
       <p>{{project.siteURL}}</p>
       <p>{{project.codeURL}}</p>
       <p>{{project.description}}</p>
+      <a class="project-update" href="#">
+        <p class="displayDeleteUpdateLinks project-show">edit</p>
+      </a>
+      <a data-id="{{project.id}}" class="project-update-delete" href="#">
+        <p class="displayDeleteUpdateLinks project-show">delete</p>
+      </a>
     </div>
   </script>
 
