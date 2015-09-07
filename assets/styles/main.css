@@ -28,6 +28,29 @@
   opacity:1;
 }*/
 
+#homepage-projects {
+  text-align: center;
+}
+
+.entire-homepage-project {
+  display: inline-block;
+  padding: 0 10px;
+  border: ;
+}
+
+p.nospace {
+  margin-bottom: 0px;
+}
+
+img {
+  border: 2px solid #000000;
+  border-radius: 10px;
+}
+
+img:hover {
+  border: 2px solid #ff0000;
+}
+
 p.indent {
   text-align: left;
   text-indent: 25px;
