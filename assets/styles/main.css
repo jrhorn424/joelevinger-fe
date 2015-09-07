@@ -29,13 +29,17 @@
 }*/
 
 #homepage-projects {
-  text-align: center;
+  margin: 0 auto;
 }
 
 .entire-homepage-project {
   display: inline-block;
   padding: 0 10px;
   border: ;
+}
+
+.container {
+  width: 700px;
 }
 
 p.nospace {

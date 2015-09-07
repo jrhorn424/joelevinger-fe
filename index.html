@@ -104,11 +104,11 @@
 -->
 
   <script id="homepage-template" type="text/x-handlebars-template">
-    <div id="homepage-projects">
+    <div id="homepage-projects" class="container">
       {{#each projects}}
-      <div class="entire-homepage-project" data-id="{{this.id}}">
-        <p class="nospace" data-id="{{this.id}}"><img src="assets/{{this.imageURL_sm}}"</p>
-      </div>
+        <div class="entire-homepage-project" data-id="{{this.id}}">
+          <p class="nospace" data-id="{{this.id}}"><img src="assets/{{this.imageURL_sm}}"</p>
+        </div>
       {{/each}}
     </div>
   </script>
