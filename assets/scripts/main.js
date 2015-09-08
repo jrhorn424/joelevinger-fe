@@ -15,9 +15,9 @@ $(document).ready(function() {
 // BEGIN: page load handlers
 //////////////////////////////////////////////
 
-$('#login-button').on('click', function(event) {
-  showPage.loginPage();
-});
+  $('#login-button').on('click', function(event) {
+    showPage.loginPage();
+  });
 
 //////////////////////////////////////////////
 // END: page load handlers
@@ -27,30 +27,30 @@ $('#login-button').on('click', function(event) {
 // BEGIN: click handlers
 //////////////////////////////////////////////
 
-$('#login').on('click', function() {
-  login();
-  getProjects();
-  showPage.cmsPage();
-});
+  $('#login').on('click', function() {
+    login();
+    getProjects();
+    showPage.cmsPage();
+  });
 
-$('#project-submit').on('click', function() {
-  createProject();
-});
+  $('#project-submit').on('click', function() {
+    createProject();
+  });
 
-$('#js').on('click', function() {
-  console.log('in the js click handler');
-  retrieveJavaScript();
-});
+  $('#js').on('click', function() {
+    console.log('in the js click handler');
+    retrieveJavaScript();
+  });
 
-$('#ruby').on('click', function() {
-  console.log('in the ruby click handler');
-  retrieveRuby();
-});
+  $('#ruby').on('click', function() {
+    console.log('in the ruby click handler');
+    retrieveRuby();
+  });
 
-$('#all').on('click', function() {
-  console.log('in the all click handler');
-  getProjects();
-});
+  $('#all').on('click', function() {
+    console.log('in the all click handler');
+    getProjects();
+  });
 
 //////////////////////////////////////////////
 // END: click handlers
@@ -60,23 +60,23 @@ $('#all').on('click', function() {
 // BEGIN: delete a project
 //////////////////////////////////////////////
 
-$('#cmsResults').on('click', '.project-update-delete', function(event) {
-  event.preventDefault();
-  console.log('in the delete function');
-  var entireProjectElement = this.parentElement;
-  $.ajax(server + '/projects/' + $(this).data('id'), {
-    contentType: 'application/json',
-    processData: false,
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + simpleStorage.get('token')
-    }
-  }).done(function() {
-    $(entireProjectElement).remove();
-  }).fail(function(jqxhr, textStatus, errorThrown) {
-    alert('Unable to delete a project.');
+  $('#cmsResults').on('click', '.project-update-delete', function(event) {
+    event.preventDefault();
+    console.log('in the delete function');
+    var entireProjectElement = this.parentElement;
+    $.ajax(server + '/projects/' + $(this).data('id'), {
+      contentType: 'application/json',
+      processData: false,
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Token token=' + simpleStorage.get('token')
+      }
+    }).done(function() {
+      $(entireProjectElement).remove();
+    }).fail(function(jqxhr, textStatus, errorThrown) {
+      alert('Unable to delete a project.');
+    });
   });
-});
 
 //////////////////////////////////////////////
 // END: delete a project
@@ -86,6 +86,35 @@ $('#cmsResults').on('click', '.project-update-delete', function(event) {
 
 //////////////////////////////////////////////
 // END: document.ready
+//////////////////////////////////////////////
+
+//////////////////////////////////////////////
+// BEGIN: retrieve one project
+//////////////////////////////////////////////
+
+  var retrieveOneProject = function() {
+    $('#homepageResults').on('click', '.showOneProject', function() {
+      console.log('in the AJAX call to retrieve one project');
+      $.ajax({
+        url: server + '/projects/' + $(this).data('id'),
+        method: 'GET',
+        headers: {
+          Authorization: 'Token token=' + simpleStorage.get('token')
+        }
+      }).done(function(response){
+        console.log(response);
+        var template = Handlebars.compile($('#show-page').html());
+        var html = template(response.project);
+        $('#showpageResults').html(html);
+        showPage.detailPage();
+      }).fail(function(error){
+        console.log(error);
+      });
+    });
+  };
+
+//////////////////////////////////////////////
+// END: retrieve one project
 //////////////////////////////////////////////
 
 //////////////////////////////////////////////

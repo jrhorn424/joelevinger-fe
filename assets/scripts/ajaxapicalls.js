@@ -28,6 +28,7 @@ var getProjects = function() {
     console.log('projects = ' + response.projects);
     $('#cmsResults').html(View.cmsIndexHTML({projects: response.projects}));
     $('#homepageResults').html(View.homepageIndexHTML({projects: response.projects}));
+    retrieveOneProject();
   }).fail(function(error){
     console.log(error);
   });

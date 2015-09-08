@@ -28,9 +28,9 @@
 
   <div id="homepage">
     <button id="login-button">Login</button>
-      <div id="appnav">
-        <button id="all">All</button> <button id="js">JavaScript</button> <button id="ruby">Ruby on Rails</button>
-      </div>
+    <div id="appnav">
+      <button id="all">All</button> <button id="js">JavaScript</button> <button id="ruby">Ruby on Rails</button>
+    </div>
     <div id="homepageResults"></div>
   </div>
 
@@ -38,6 +38,23 @@
 <!--
 ************************************************
 * END: Home page
+************************************************
+-->
+
+<!--
+************************************************
+* BEGIN: Show page
+************************************************
+-->
+
+  <div id="detailpage">
+    <div id="showpageResults"></div>
+  </div>
+
+
+<!--
+************************************************
+* END: Show page
 ************************************************
 -->
 
@@ -112,7 +129,11 @@
     <div id="homepage-projects" class="container">
       {{#each projects}}
         <div class="entire-homepage-project" data-id="{{this.id}}">
-          <p class="nospace" data-id="{{this.id}}"><img src="assets/{{this.imageURL_sm}}"</p>
+          <a href="#" id="project{{this.id}}" data-id="{{this.id}}" class="showOneProject">
+            <p class="nospace" data-id="{{this.id}}">
+              <img src="assets/{{this.imageURL_sm}}">
+            </p>
+          </a>
         </div>
       {{/each}}
     </div>
@@ -224,6 +245,28 @@
 <!--
 ************************************************
 * END: Projects template
+************************************************
+-->
+
+<!--
+************************************************
+* BEGIN: Show page template
+************************************************
+-->
+
+  <script id="show-page" type="text/x-handlebars-template">
+    <div id="showpage-project">
+      <p>{{title}}</p>
+      <p><img src="assets/{{imageURL_sm}}"></p>
+      <p>{{siteURL}}</p>
+      <p>{{codeURL}}</p>
+      <p>{{description}}</p>
+    </div>
+  </script>
+
+<!--
+************************************************
+* END: Show page template
 ************************************************
 -->
 
