@@ -1,7 +1,7 @@
 'use strict';
 
-// var server = '//localhost:3000';
-var server = 'https://glacial-wildwood-4209.herokuapp.com/';
+var server = '//localhost:3000';
+// var server = 'https://glacial-wildwood-4209.herokuapp.com/';
 
 //////////////////////////////////////////////
 // BEGIN: document.ready

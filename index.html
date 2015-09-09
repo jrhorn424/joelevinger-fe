@@ -9,6 +9,30 @@
 
 <!--
 ************************************************
+* BEGIN: header
+************************************************
+ -->
+
+  <div id="header">
+    <div id="logo">
+      <a href="#" class="logo">
+        <img src="assets/images/logo.gif" alt="">
+      </a>
+    </div>
+    <ul class="ulheader">
+      <li id="about"><a class="aheader" href="#">About Me</a></li>
+      <li id="contact"><a class="aheader" href="#">Contact Me</a></li>
+    </ul>
+  </div>
+
+<!--
+************************************************
+* END: header
+************************************************
+ -->
+
+<!--
+************************************************
 * BEGIN: Home page
 ************************************************
 -->
@@ -27,7 +51,7 @@
   </div> -->
 
   <div id="homepage">
-    <button id="login-button">Login</button>
+    <!-- <button id="login-button">Login</button> -->
     <div id="appnav">
       <button id="all">All</button> <button id="js">JavaScript</button> <button id="ruby">Ruby on Rails</button>
     </div>
@@ -130,8 +154,8 @@
       {{#each projects}}
         <div class="entire-homepage-project" data-id="{{this.id}}">
           <a href="#" id="project{{this.id}}" data-id="{{this.id}}" class="showOneProject">
-            <p class="nospace" data-id="{{this.id}}">
-              <img src="assets/{{this.imageURL_sm}}">
+            <p class="nospace imageborder" data-id="{{this.id}}">
+              <img class="image" src="assets/{{this.imageURL_sm}}">
             </p>
           </a>
         </div>
