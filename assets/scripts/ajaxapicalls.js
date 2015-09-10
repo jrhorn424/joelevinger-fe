@@ -1,22 +1,16 @@
 'use strict';
 
-var login = function() {
+var login = function(credentials, callback) {
   $.ajax(server + '/login', {
     contentType: 'application/json',
     processData: false,
-    data: JSON.stringify({
-      credentials: {
-        email: $('#email').val(),
-        password: $('#password').val()
-      }
-    }),
+    data: JSON.stringify(credentials),
     dataType: 'json',
     method: 'POST'
-  }).done(function(data, textStatus, jqxhr){
-    simpleStorage.set('token', data.token);
-    console.log('token = ' + data.token);
-  }).fail(function(jqxhr, textStatus, errorThrown){
-    alert('Check your input values.');
+  }).done(function(data, textStatus, jqxhr) {
+    callback(null, data);
+  }).fail(function(jqxhr, textStatus, errorThrown) {
+    callback(jqxhr);
   });
 };
 

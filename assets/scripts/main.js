@@ -8,6 +8,9 @@ var server = 'https://glacial-wildwood-4209.herokuapp.com/';
 //////////////////////////////////////////////
 
 $(document).ready(function() {
+  if (simpleStorage.get('token')) {
+    simpleStorage.deleteKey('token');
+  }
   getProjects();
   showPage.homePage();
 
@@ -29,9 +32,21 @@ $(document).ready(function() {
 //////////////////////////////////////////////
 
   $('#login').on('click', function() {
-    login();
-    getProjects();
-    showPage.cmsPage();
+    var credentials = {
+      credentials: {
+        email: $('#email').val(),
+        password: $('#password').val()
+      }
+    };
+    login(credentials, function(err, data) {
+      if (err) {
+        return alert('Check your input values.');
+      }
+      simpleStorage.set('token', data.token);
+      console.log('token = ' + data.token);
+      getProjects();
+      showPage.cmsPage();
+    });
   });
 
   $('#logo').on('click', function() {
