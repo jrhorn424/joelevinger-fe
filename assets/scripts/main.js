@@ -1,7 +1,9 @@
 'use strict';
 
-// var server = '//localhost:3000';
-var server = 'https://glacial-wildwood-4209.herokuapp.com/';
+var $ = require('jquery');
+var simpleStorage = require('simplestorage.js');
+
+var server = require('./config').apiServer;
 
 //////////////////////////////////////////////
 // BEGIN: document.ready

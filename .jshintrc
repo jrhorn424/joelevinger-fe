@@ -1,0 +1,16 @@
+{
+  "browser": true,
+  "browserify": true,
+  "curly": true,
+  "devel": true,
+  "eqeqeq": true,
+  "esnext": true,
+  "globalstrict": true,
+  "latedef": "nofunc",
+  "noarg": true,
+  "nonew": true,
+  "quotmark": "single",
+  "strict": true,
+  "undef": true,
+  "unused": true
+}
