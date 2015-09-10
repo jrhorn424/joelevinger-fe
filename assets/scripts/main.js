@@ -1,5 +1,8 @@
 'use strict';
 
+var $ = require('jquery');
+var simpleStorage = require('simplestorage.js');
+
 var server = require('./config').server
 
 //////////////////////////////////////////////
