@@ -3,7 +3,7 @@
 var $ = require('jquery');
 var simpleStorage = require('simplestorage.js');
 
-var server = require('./config').server
+var server = require('./config').apiServer;
 
 //////////////////////////////////////////////
 // BEGIN: document.ready
