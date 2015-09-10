@@ -1,0 +1,15 @@
+{
+  "js": [
+    "assets/scripts/**/*.js"
+  ],
+  "other": [
+    "Gruntfile.js",
+    "grunt/*.js"
+  ],
+  "json": [
+    "assets/scripts/**/*.json"
+  ],
+  "other_json": [
+    "grunt/*.json"
+  ]
+}
