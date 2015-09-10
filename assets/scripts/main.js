@@ -1,7 +1,6 @@
 'use strict';
 
-// var server = '//localhost:3000';
-var server = 'https://glacial-wildwood-4209.herokuapp.com/';
+var server = require('./config').server
 
 //////////////////////////////////////////////
 // BEGIN: document.ready
