@@ -14,19 +14,7 @@ var login = function(credentials, callback) {
   });
 };
 
-var getProjects = function() {
-  $.ajax({
-    url: server + '/projects/',
-    method: 'GET'
-  }).done(function(response){
-    console.log('projects = ' + response.projects);
-    $('#cmsResults').html(View.cmsIndexHTML({projects: response.projects}));
-    $('#homepageResults').html(View.homepageIndexHTML({projects: response.projects}));
-    retrieveOneProject();
-  }).fail(function(error){
-    console.log(error);
-  });
-};
+
 
 var retrieveJavaScript = function() {
   $.ajax({

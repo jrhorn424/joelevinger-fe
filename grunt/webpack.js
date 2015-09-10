@@ -19,6 +19,12 @@ module.exports = {
       new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
     ],
 
+    module: {
+      loaders: [
+        { test: /\.handlebars$/, loader: 'handlebars-loader' }
+      ]
+    },
+
     resolve: {
       modulesDirectories: ['node_modules', 'src'],
       fallback: path.join(__dirname, 'node_modules'),
@@ -26,6 +32,7 @@ module.exports = {
         'handlebars': 'handlebars/runtime.js'
       }
     },
+
     resolveLoader: {
       fallback: path.join(__dirname, 'node_modules'),
       alias: {

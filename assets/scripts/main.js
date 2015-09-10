@@ -4,6 +4,8 @@ var $ = require('jquery');
 var simpleStorage = require('simplestorage.js');
 
 var server = require('./config').apiServer;
+var getProjects = require('./projects/index.js');
+var router = require('./router');
 
 //////////////////////////////////////////////
 // BEGIN: document.ready
@@ -14,7 +16,7 @@ $(document).ready(function() {
     simpleStorage.deleteKey('token');
   }
   getProjects();
-  showPage.homePage();
+  router.routeTo('home');
 
 //////////////////////////////////////////////
 // BEGIN: page load handlers
@@ -109,35 +111,6 @@ $(document).ready(function() {
 
 //////////////////////////////////////////////
 // END: document.ready
-//////////////////////////////////////////////
-
-//////////////////////////////////////////////
-// BEGIN: retrieve one project
-//////////////////////////////////////////////
-
-  var retrieveOneProject = function() {
-    $('#homepageResults').on('click', '.showOneProject', function() {
-      console.log('in the AJAX call to retrieve one project');
-      $.ajax({
-        url: server + '/projects/' + $(this).data('id'),
-        method: 'GET',
-        headers: {
-          Authorization: 'Token token=' + simpleStorage.get('token')
-        }
-      }).done(function(response){
-        console.log(response);
-        var template = Handlebars.compile($('#show-page').html());
-        var html = template(response.project);
-        $('#showpageResults').html(html);
-        showPage.detailPage();
-      }).fail(function(error){
-        console.log(error);
-      });
-    });
-  };
-
-//////////////////////////////////////////////
-// END: retrieve one project
 //////////////////////////////////////////////
 
 //////////////////////////////////////////////
