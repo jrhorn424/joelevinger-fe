@@ -303,12 +303,12 @@
 -->
 
   <script id="show-page" type="text/x-handlebars-template">
-    <div id="showpage-project">
-      <p>{{title}}</p>
-      <p><img src="assets/{{imageURL_sm}}"></p>
+    <div id="showpage-photo">
+      <p class="detailtitle">{{title}}</p>
+      <p><img class="showimg" src="assets/{{imageURL_lg}}"></p>
       <p><span class="bold">Website: </span><a href="http://{{siteURL}}" target="_blank">{{siteURL}}</a></p>
       <p><span class="bold">Code Repo: </span><a href="{{codeURL}}" target="_blank">{{codeURL}}</a></p>
-      <p><span class="bold">Description: </span>{{description}}</p>
+      {{{description}}}
     </div>
   </script>
 
