@@ -1,7 +1,7 @@
 'use strict';
 
-var server = '//localhost:3000';
-// var server = 'https://glacial-wildwood-4209.herokuapp.com/';
+// var server = '//localhost:3000';
+var server = 'https://glacial-wildwood-4209.herokuapp.com/';
 
 //////////////////////////////////////////////
 // BEGIN: document.ready
@@ -16,6 +16,7 @@ $(document).ready(function() {
 //////////////////////////////////////////////
 
   $('#login-button').on('click', function(event) {
+    event.preventDefault();
     showPage.loginPage();
   });
 
@@ -31,6 +32,11 @@ $(document).ready(function() {
     login();
     getProjects();
     showPage.cmsPage();
+  });
+
+  $('#logo').on('click', function() {
+    getProjects();
+    showPage.homePage();
   });
 
   $('#project-submit').on('click', function() {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Exo:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
   <title>Joe Levinger's Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,9 +52,10 @@
   </div> -->
 
   <div id="homepage">
-    <!-- <button id="login-button">Login</button> -->
     <div id="appnav">
-      <button id="all">All</button> <button id="js">JavaScript</button> <button id="ruby">Ruby on Rails</button>
+      <a href="#" class="appnav" id="all">All</a>
+      <a href="#" class="appnav" id="js">JavaScript</a>
+      <a href="#" class="appnav" id="ruby">Ruby on Rails</a>
     </div>
     <div id="homepageResults"></div>
   </div>
@@ -90,10 +92,14 @@
 
   <div id="loginpage">
     <p>Please log in:</p>
-    <label for="emailLogin">Email:</label>
-    <input type="text" name="email" id="email">
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
+    <div>
+      <label for="emailLogin">Email:</label>
+      <input type="text" name="email" id="email">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password">
+    </div>
     <button class="login" id="login">Submit</button>
   </div>
 
@@ -134,6 +140,24 @@
 <!--
 ************************************************
 * END: CMS page
+************************************************
+-->
+
+<!--
+************************************************
+* BEGIN: footer
+************************************************
+-->
+
+  <footer>
+    <button id="login-button">Login</button>
+    <a id="login-button" class="nodecoration" href="#">&copy;</a>
+    Joe Levinger 2015
+  </footer>
+
+<!--
+************************************************
+* END: footer
 ************************************************
 -->
 
@@ -282,9 +306,9 @@
     <div id="showpage-project">
       <p>{{title}}</p>
       <p><img src="assets/{{imageURL_sm}}"></p>
-      <p>{{siteURL}}</p>
-      <p>{{codeURL}}</p>
-      <p>{{description}}</p>
+      <p><span class="bold">Website: </span><a href="http://{{siteURL}}" target="_blank">{{siteURL}}</a></p>
+      <p><span class="bold">Code Repo: </span><a href="{{codeURL}}" target="_blank">{{codeURL}}</a></p>
+      <p><span class="bold">Description: </span>{{description}}</p>
     </div>
   </script>
 
