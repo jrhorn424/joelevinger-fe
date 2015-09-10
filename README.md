@@ -25,8 +25,8 @@ Backend Features:
 
 Links:
 
-User Stories: https://github.com/jlevinger/joelevinger-fe/blob/master/userstories.pdf
-Wireframes: https://github.com/jlevinger/joelevinger-fe/blob/master/JoeLevingerPortfolio.pdf
-ERD: https://github.com/jlevinger/joelevingerbe/blob/master/erd.jpg
-Backend: https://github.com/jlevinger/joelevingerbe
-Joe Levinger Portfolio app: http://jlevinger.github.io/joelevinger-fe/
+* User Stories: https://github.com/jlevinger/joelevinger-fe/blob/master/userstories.pdf
+* Wireframes: https://github.com/jlevinger/joelevinger-fe/blob/master/JoeLevingerPortfolio.pdf
+* ERD: https://github.com/jlevinger/joelevingerbe/blob/master/erd.jpg
+* Backend: https://github.com/jlevinger/joelevingerbe
+* Joe Levinger Portfolio app: http://jlevinger.github.io/joelevinger-fe/
