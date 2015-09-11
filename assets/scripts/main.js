@@ -7,60 +7,25 @@ var server = require('./config').apiServer;
 var getProjects = require('./projects/index.js');
 var router = require('./router');
 
-//////////////////////////////////////////////
-// BEGIN: document.ready
-//////////////////////////////////////////////
+// modules evaluated for side-effects
+require('./components/logo');
+require('./authentication/login');
 
-$(document).ready(function() {
-  if (simpleStorage.get('token')) {
-    simpleStorage.deleteKey('token');
-  }
+
+var init = function () {
   getProjects();
   router.routeTo('home');
+};
 
-//////////////////////////////////////////////
-// BEGIN: page load handlers
-//////////////////////////////////////////////
+var showLoginView = function (event) {
+  event.preventDefault();
+  router.routeTo('login');
+};
 
-  $('#login-button').on('click', function(event) {
-    event.preventDefault();
-    showPage.loginPage();
-  });
+$(document).ready(function() {
+  init();
 
-//////////////////////////////////////////////
-// END: page load handlers
-//////////////////////////////////////////////
-
-//////////////////////////////////////////////
-// BEGIN: click handlers
-//////////////////////////////////////////////
-
-  $('#login').on('click', function() {
-    var credentials = {
-      credentials: {
-        email: $('#email').val(),
-        password: $('#password').val()
-      }
-    };
-    login(credentials, function(err, data) {
-      if (err) {
-        return alert('Check your input values.');
-      }
-      simpleStorage.set('token', data.token);
-      console.log('token = ' + data.token);
-      getProjects();
-      showPage.cmsPage();
-    });
-  });
-
-  $('#logo').on('click', function() {
-    getProjects();
-    showPage.homePage();
-  });
-
-  $('#project-submit').on('click', function() {
-    createProject();
-  });
+  $('#login-button').on('click', showLoginView);
 
   $('#js').on('click', function() {
     console.log('in the js click handler');

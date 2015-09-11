@@ -18,7 +18,7 @@ var show = function() {
         Authorization: 'Token token=' + simpleStorage.get('token')
       }
     }).done(function(response){
-      $('#showpageResults').html(renderProject(response));
+      $('#showpageResults').html(renderProject(response.project));
       router.routeTo('project');
     }).fail(function(err){
       console.error(err);
