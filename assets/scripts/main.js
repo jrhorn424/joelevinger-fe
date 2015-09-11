@@ -22,6 +22,12 @@ var showLoginView = function (event) {
   router.routeTo('login');
 };
 
+var renderLogin = require('../../templates/login.handlebars.');
+$('#loginpage').html(renderLogin());
+
+var renderProjectForm = require('../../templates/projects/form.handlebars.');
+$('#projectForm').html(renderProjectForm());
+
 $(document).ready(function() {
   init();
 

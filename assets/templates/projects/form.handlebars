@@ -1,0 +1,18 @@
+<!-- The id "projectForm" is for the form that appears on the bottom of the CMS page, enabling the user to submit a new project.  This code is similar to the code that appears in assets/templates/dashboard/list.handlebars and assets/templates/projects.handlebars, but we need this redundancy. -->
+
+<p class="centerHeader">Submit a project:</p>
+<label for="title">TITLE:</label>
+<input type="text" name="title" class="projectForm" id ="project-title">
+<label for="category">CATEGORY:</label>
+<input type="text" name="category" class="projectForm" id ="project-category">
+<label for="imageURL_sm">SMALL IMAGE URL:</label>
+<input type="text" name="imageURL_sm" class="projectForm" id ="project-imageURL_sm">
+<label for="imageURL_lg">LARGE IMAGE URL:</label>
+<input type="text" name="imageURL_lg" class="projectForm" id ="project-imageURL_lg">
+<label for="siteURL">SITE URL:</label>
+<input type="text" name="siteURL" class="projectForm" id ="project-siteURL">
+<label for="codeURL">CODE URL:</label>
+<input type="text" name="codeURL" class="projectForm" id ="project-codeURL">
+<label for="body">DESCRIPTION:</label>
+<textarea rows="4" cols="50" name="description" class="projectForm" id="project-description"></textarea>
+<button id="project-submit">Submit</button>

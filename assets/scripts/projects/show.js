@@ -4,7 +4,7 @@ var $ = require('jquery');
 var simpleStorage = require('simplestorage.js');
 
 var apiServer = require('../config').apiServer;
-var renderProject = require('../../templates/project.handlebars');
+var renderProject = require('../../templates/detail.handlebars');
 var router = require('../router');
 
 // TODO: fix document ready inside modules

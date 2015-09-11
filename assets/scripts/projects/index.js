@@ -2,8 +2,8 @@
 
 var $ = require('jquery');
 var apiServer = require('../config').apiServer;
-var renderCms = require('../../templates/cms.handlebars');
-var renderHome = require('../../templates/home.handlebars');
+var renderCms = require('../../templates/dashboard/list.handlebars');
+var renderHome = require('../../templates/gallery.handlebars');
 var getProject = require('./show');
 
 var index = function() {
