@@ -49,6 +49,15 @@ a.nodecoration {
   color: #005957;
 }
 
+#introtext {
+  color: #005957;
+  font-size: 40px;
+  width: 50%;
+  font-weight: bold;
+  margin: 0 auto;
+  text-align: center;
+}
+
 #homepage {
   width: 100%;
   margin-top: 125px;
@@ -137,6 +146,10 @@ input[type=password] {
 
 p.nospace {
   margin: 3px 0 0 0;
+}
+
+p.nospacetop {
+  margin: 3px 0 60px 0;
 }
 
 .imageborder {
