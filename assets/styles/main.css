@@ -84,12 +84,10 @@ a.nodecoration {
 
 #aboutmepage {
   margin-top: 150px;
-  height: 800px;
 }
 
 #contactmepage {
-  margin-top: 150px;
-  height: 800px;
+  margin-top: 200px;
 }
 
 .detailtitle {
@@ -250,6 +248,11 @@ p.indent {
   width: 50%;
   text-align: center;
   margin: 0 auto;
+}
+
+.centerpage {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .centerHeader {
