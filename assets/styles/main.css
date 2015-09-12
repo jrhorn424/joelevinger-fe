@@ -176,6 +176,12 @@ p.indent {
   height: 45px;
 }
 
+.description {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+
 footer {
   width: 100%;
   height: 35px;
