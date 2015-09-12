@@ -44,6 +44,15 @@ a.aheader:hover {
   color: #CC7A00;
 }
 
+a.sitelinks {
+  color: #005957;
+  -webkit-transition: all 0.5s ease;
+}
+
+a.sitelinks:hover {
+  color: #CC7A00;
+}
+
 a.nodecoration {
   text-decoration: none;
   color: #005957;
