@@ -114,6 +114,16 @@ input[type=password] {
   margin: 0 0 10px 0;
 }
 
+textarea {
+  padding: 5px;
+  display: block;
+  font-size: 20px;
+  color: #005957;
+  border: 2px solid #005957;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+}
+
 button {
   background-color: #005957;
   padding: 7px 15px;
@@ -207,6 +217,13 @@ p.indent {
   width: 50%;
   text-align: center;
   margin: 0 auto;
+}
+
+.centerHeader {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #005957;
 }
 
 footer {
