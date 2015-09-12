@@ -15,6 +15,7 @@ Frontend Features:
 * Extensive use of CSS
 * jQuery for DOM manipulation and event handling
 * Creation of a CMS, enabling the site's owner to perform all CRUD actions on the items in the portfolio
+* Extension usage of separation of concerns, which can be found on the "tooling" branch of this repo: https://github.com/jlevinger/joelevinger-fe/tree/tooling
 
 Backend Features:
 
