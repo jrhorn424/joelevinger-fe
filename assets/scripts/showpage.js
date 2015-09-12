@@ -8,6 +8,8 @@ var showPage = (function() {
       $('#loginpage').hide();
       $('#cmspage').hide();
       $('#detailpage').hide();
+      $('#aboutmepage').hide();
+      $('#contactmepage').hide();
     },
     loginPage: function() {
       event.preventDefault();
@@ -15,6 +17,8 @@ var showPage = (function() {
       $('#homepage').hide();
       $('#cmspage').hide();
       $('#detailpage').hide();
+      $('#aboutmepage').hide();
+      $('#contactmepage').hide();
     },
     cmsPage: function() {
       event.preventDefault();
@@ -22,6 +26,8 @@ var showPage = (function() {
       $('#loginpage').hide();
       $('#homepage').hide();
       $('#detailpage').hide();
+      $('#aboutmepage').hide();
+      $('#contactmepage').hide();
     },
     detailPage: function() {
       event.preventDefault();
@@ -29,6 +35,26 @@ var showPage = (function() {
       $('#cmspage').hide();
       $('#loginpage').hide();
       $('#homepage').hide();
+      $('#aboutmepage').hide();
+      $('#contactmepage').hide();
+    },
+    aboutMePage: function() {
+      event.preventDefault();
+      $('#aboutmepage').show();
+      $('#cmspage').hide();
+      $('#loginpage').hide();
+      $('#homepage').hide();
+      $('#detailpage').hide();
+      $('#contactmepage').hide();
+    },
+    contactMePage: function() {
+      event.preventDefault();
+      $('#contactmepage').show();
+      $('#cmspage').hide();
+      $('#loginpage').hide();
+      $('#homepage').hide();
+      $('#detailpage').hide();
+      $('#aboutmepage').hide();
     }
   };
 })();

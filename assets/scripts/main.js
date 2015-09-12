@@ -54,6 +54,14 @@ $(document).ready(function() {
     showPage.homePage();
   });
 
+  $('#about').on('click', function() {
+    showPage.aboutMePage();
+  });
+
+  $('#contact').on('click', function() {
+    showPage.contactMePage();
+  });
+
   $('#project-submit').on('click', function() {
     createProject();
   });

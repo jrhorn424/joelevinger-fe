@@ -45,12 +45,11 @@ a.aheader:hover {
 }
 
 a.sitelinks {
-  color: #005957;
-  -webkit-transition: all 0.5s ease;
+  color: #950000;
 }
 
 a.sitelinks:hover {
-  color: #CC7A00;
+  color: #FF0000;
 }
 
 a.nodecoration {
@@ -83,6 +82,16 @@ a.nodecoration {
   height: 800px;
 }
 
+#aboutmepage {
+  margin-top: 150px;
+  height: 800px;
+}
+
+#contactmepage {
+  margin-top: 150px;
+  height: 800px;
+}
+
 .detailtitle {
   font-size: 30px;
   color: #005957;
@@ -101,6 +110,16 @@ label {
 
 .bold {
   font-weight: 700;
+}
+
+.right {
+  float: right;
+  margin: 0 0 20px 20px;
+}
+
+.contentwrapper {
+  width: 90%;
+  margin: 0 auto;
 }
 
 input[type=text] {
@@ -191,6 +210,11 @@ p.nospacetop {
 
 .imageborder:hover {
   border: 2px solid #ff0000;
+}
+
+.imagenolink {
+  border: 4px solid #950000;
+  margin-top: 5px;
 }
 
 .image {
