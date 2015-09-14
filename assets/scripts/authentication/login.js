@@ -5,7 +5,9 @@ var simpleStorage = require('simplestorage.js');
 
 var apiServer = require('../config').apiServer;
 
-var login = function(credentials, callback) {
+var controller = {};
+
+controller.login = function(credentials, callback) {
   $.ajax(apiServer + '/login', {
     contentType: 'application/json',
     processData: false,
@@ -19,12 +21,10 @@ var login = function(credentials, callback) {
   });
 };
 
-var resetSimpleStorage = function () {
+controller.logout = function () {
   if (simpleStorage.get('token')) {
     simpleStorage.deleteKey('token');
   }
 };
 
-$(document).ready(resetSimpleStorage);
-
-module.exports = login;
+module.exports = controller;

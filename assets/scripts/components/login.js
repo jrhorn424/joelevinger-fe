@@ -3,9 +3,9 @@
 var $ = require('jquery');
 var simpleStorage = require('simplestorage.js');
 
-var login = require('../authentication/login');
 var router = require('../router');
 var projectsController = require('../projects/controller');
+var authenticationController = require('../authentication/login');
 
 var renderLogin = require('./login.handlebars');
 
@@ -16,7 +16,7 @@ var submitLogin = function () {
       password: $('#password').val()
     }
   };
-  login(credentials, function(err, data) {
+  authenticationController.login(credentials, function(err, data) {
     if (err) {
       return alert('Check your input values.');
     }
@@ -26,15 +26,32 @@ var submitLogin = function () {
   });
 };
 
-var showLoginView = function (event) {
-  event.preventDefault();
-  router.routeTo('login');
+var toggleLogin = function () {
+  if (simpleStorage.get('token')) {
+    router.routeTo('cms');
+  } else {
+    $('#loginpage').html(renderLogin());
+    router.routeTo('login');
+  }
 };
 
 var init = function () {
-  $('#loginpage').html(renderLogin());
-  $('#login-button').on('click', showLoginView);
+  $('#login-button').on('click', toggleLogin);
+
   $('#loginpage').on('click', '#login', submitLogin);
+
+  $('#logout-button').on('click', function (event) {
+    event.preventDefault();
+    authenticationController.logout();
+    router.routeTo('home');
+  });
 };
 
 $(document).ready(init);
+
+// if logged on
+//   show CMS view
+//   turn the login button into a logoff button
+// else
+//   show login view
+//   turn the logoff button into a login button
