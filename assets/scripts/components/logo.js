@@ -2,7 +2,7 @@
 
 var $ = require('jquery');
 
-var getProjects = require('../projects/index');
+var getProjects = require('../projects/controller');
 var router = require('../router');
 
 var init = function () {

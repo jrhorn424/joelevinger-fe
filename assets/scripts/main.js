@@ -1,11 +1,17 @@
 'use strict';
 
+// external modules
 var $ = require('jquery');
 var simpleStorage = require('simplestorage.js');
 
+// my modules
 var server = require('./config').apiServer;
-var getProjects = require('./projects/index.js');
+var projectsController = require('./projects/controller');
 var router = require('./router');
+
+// templates
+var renderLogin = require('../templates/login.handlebars');
+var renderProjectForm = require('../templates/projects/form.handlebars');
 
 // modules evaluated for side-effects
 require('./components/logo');
@@ -13,7 +19,7 @@ require('./authentication/login');
 
 
 var init = function () {
-  getProjects();
+  projectsController.index();
   router.routeTo('home');
 };
 
@@ -22,35 +28,17 @@ var showLoginView = function (event) {
   router.routeTo('login');
 };
 
-var renderLogin = require('../../templates/login.handlebars.');
-$('#loginpage').html(renderLogin());
-
-var renderProjectForm = require('../../templates/projects/form.handlebars.');
-$('#projectForm').html(renderProjectForm());
-
 $(document).ready(function() {
   init();
 
   $('#login-button').on('click', showLoginView);
 
-  $('#js').on('click', function() {
-    console.log('in the js click handler');
-    retrieveJavaScript();
-  });
+  $('#loginpage').html(renderLogin());
+  $('#projectForm').html(renderProjectForm());
 
-  $('#ruby').on('click', function() {
-    console.log('in the ruby click handler');
-    retrieveRuby();
-  });
-
-  $('#all').on('click', function() {
-    console.log('in the all click handler');
-    getProjects();
-  });
-
-//////////////////////////////////////////////
-// END: click handlers
-//////////////////////////////////////////////
+  $('#js').on('click', projectsController.filterByCategory('js'));
+  $('#ruby').on('click', projectsController.filterByCategory('ruby'));
+  $('#all').on('click', projectsController.index());
 
 //////////////////////////////////////////////
 // BEGIN: delete a project
