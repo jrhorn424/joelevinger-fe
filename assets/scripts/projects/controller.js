@@ -6,10 +6,10 @@ var simpleStorage = require('simplestorage.js');
 var apiServer = require('../config').apiServer;
 var router = require('../router');
 
-var renderCms = require('../../templates/dashboard/list.handlebars');
-var renderHome = require('../../templates/gallery.handlebars');
-var renderProjects = require('../../templates/projects.handlebars');
-var renderProject = require('../../templates/detail.handlebars');
+var renderCms = require('../dashboard/list.handlebars');
+var renderHome = require('./gallery.handlebars');
+var renderProjects = require('../dashboard/project.handlebars');
+var renderProject = require('../projects/detail.handlebars');
 
 var controller = {};
 
@@ -58,7 +58,8 @@ controller.show = function() {
   });
 };
 
-controller.create = function() {;
+controller.create = function() {
+  console.log('about to execute the AJAX request to create a project');
   $.ajax(apiServer + '/projects/', {
     contentType: 'application/json',
     processData: false,
@@ -80,7 +81,8 @@ controller.create = function() {;
     }
   }).done(function(response){
     // TODO: WHICH TEMPLATE?
-    $('#appended-projects').append(renderProjects(response.project));
+    debugger;
+    $('#appended-projects').append(renderProjects(response.project)); // LOOK HERE FIRST
     $('#projectForm').children('input').val('');
     $('#projectForm').children('textarea').val('');
   }).fail(function(jqxhr){
@@ -89,7 +91,7 @@ controller.create = function() {;
 };
 
 $(document).ready(function () {
-  $('#project-submit').on('click', controller.create);
+  $('#projectForm').on('click', '#project-submit', controller.create);
 });
 
 module.exports = controller;

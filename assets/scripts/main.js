@@ -10,32 +10,20 @@ var projectsController = require('./projects/controller');
 var router = require('./router');
 
 // templates
-var renderLogin = require('../templates/login.handlebars');
-var renderProjectForm = require('../templates/projects/form.handlebars');
+var renderProjectForm = require('./projects/create.handlebars');
 
 // modules evaluated for side-effects
 require('./components/logo');
-require('./authentication/login');
-
+require('./components/login');
 
 var init = function () {
   projectsController.index();
   router.routeTo('home');
 };
 
-var showLoginView = function (event) {
-  event.preventDefault();
-  router.routeTo('login');
-};
-
 $(document).ready(function() {
   init();
-
-  $('#login-button').on('click', showLoginView);
-
-  $('#loginpage').html(renderLogin());
   $('#projectForm').html(renderProjectForm());
-
   $('#js').on('click', projectsController.filterByCategory('js'));
   $('#ruby').on('click', projectsController.filterByCategory('ruby'));
   $('#all').on('click', projectsController.index());

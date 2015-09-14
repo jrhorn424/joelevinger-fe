@@ -1,26 +1,26 @@
 {{!-- This is the template for an individual project, in the instance when the project itself is being shown, as opposed to displaying the form to edit a project.  So, the default is for the project to be displayed.  If the user hits the "edit" button, though, the project is no longer displayed, and the form is displayed in its place. --}}
 
-<div class="entire-project" data-id="{{project.id}}">
-  <p class="project title project-show" data-id="{{project.id}}">{{project.title}}</p>
+<div class="entire-project" data-id="{{id}}">
+  <p class="project title project-show" data-id="{{id}}">{{title}}</p>
   <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
-  <p class="indent category project-show">{{project.category}}</p>
+  <p class="indent category project-show">{{category}}</p>
   <input name="category" type="text" class="edit-form edit-project-category" style="display:none;">
-  <p class="indent imageURL_sm project-show">{{project.imageURL_sm}}</p>
+  <p class="indent imageURL_sm project-show">{{imageURL_sm}}</p>
   <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
-  <p class="indent imageURL_lg project-show">{{project.imageURL_lg}}</p>
+  <p class="indent imageURL_lg project-show">{{imageURL_lg}}</p>
   <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
-  <p class="indent siteURL project-show">{{project.siteURL}}</p>
+  <p class="indent siteURL project-show">{{siteURL}}</p>
   <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
-  <p class="indent codeURL project-show">{{project.codeURL}}</p>
+  <p class="indent codeURL project-show">{{codeURL}}</p>
   <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
-  <p class="indent description project-show">{{project.description}}</p>
+  <p class="indent description project-show">{{description}}</p>
   <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
   <button id="edit-project-submit" style="display: none;" class="edit-form">Submit Edits</button>
   <button id="edit-project-cancel" style="display: none;" class="edit-form">Cancel</button>
   <a class="project-update" href="#">
     <p class="indent displayDeleteUpdateLinks project-show">edit</p>
   </a>
-  <a data-id="{{project.id}}" class="project-update-delete" href="#">
+  <a data-id="{{id}}" class="project-update-delete" href="#">
     <p class="indent displayDeleteUpdateLinks project-show">delete</p>
   </a>
 </div>

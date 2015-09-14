@@ -28,23 +28,3 @@ var resetSimpleStorage = function () {
 $(document).ready(resetSimpleStorage);
 
 module.exports = login;
-
-
-// TODO integrate these click handlers
-  // $('#login').on('click', function() {
-  //   var credentials = {
-  //     credentials: {
-  //       email: $('#email').val(),
-  //       password: $('#password').val()
-  //     }
-  //   };
-  //   login(credentials, function(err, data) {
-  //     if (err) {
-  //       return alert('Check your input values.');
-  //     }
-  //     simpleStorage.set('token', data.token);
-  //     console.log('token = ' + data.token);
-  //     getProjects();
-  //     router.routeTo('cms');
-  //   });
-  // });
