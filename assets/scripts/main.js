@@ -6,11 +6,13 @@ var simpleStorage = require('simplestorage.js');
 
 // my modules
 var server = require('./config').apiServer;
+var authenticationController = require('./authentication/login');
 var projectsController = require('./projects/controller');
 var router = require('./router');
 
 // templates
 var renderProjectForm = require('./projects/create.handlebars');
+var renderFooter = require('./components/footer.handlebars');
 
 // modules evaluated for side-effects
 require('./components/logo');
@@ -19,6 +21,9 @@ require('./components/login');
 var init = function () {
   projectsController.index();
   router.routeTo('home');
+  $('#footerResults').html(renderFooter({
+    isLoggedIn: authenticationController.loginStatus()
+  }));
 };
 
 $(document).ready(function() {

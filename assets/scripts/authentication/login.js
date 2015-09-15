@@ -27,4 +27,12 @@ controller.logout = function () {
   }
 };
 
+controller.loginStatus = function () {
+  if (simpleStorage.get('token')) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 module.exports = controller;

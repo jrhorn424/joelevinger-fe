@@ -8,6 +8,19 @@ var projectsController = require('../projects/controller');
 var authenticationController = require('../authentication/login');
 
 var renderLogin = require('./login.handlebars');
+var renderFooter = require('./footer.handlebars');
+
+var toggleLogin = function () {
+  if (authenticationController.loginStatus()) {
+    router.routeTo('cms');
+  } else {
+    $('#loginpage').html(renderLogin());
+    router.routeTo('login');
+  }
+  $('#footerResults').html(renderFooter({
+    isLoggedIn: authenticationController.loginStatus()
+  }));
+};
 
 var submitLogin = function () {
    var credentials = {
@@ -23,28 +36,23 @@ var submitLogin = function () {
     simpleStorage.set('token', data.token);
     projectsController.index();
     router.routeTo('cms');
+    toggleLogin();
   });
 };
 
-var toggleLogin = function () {
-  if (simpleStorage.get('token')) {
-    router.routeTo('cms');
-  } else {
-    $('#loginpage').html(renderLogin());
-    router.routeTo('login');
-  }
+var logout = function (event) {
+  event.preventDefault();
+  authenticationController.logout();
+  toggleLogin();
+  router.routeTo('home');
 };
 
 var init = function () {
-  $('#login-button').on('click', toggleLogin);
+  $('#footerResults').on('click', '#login-button', toggleLogin);
 
   $('#loginpage').on('click', '#login', submitLogin);
 
-  $('#logout-button').on('click', function (event) {
-    event.preventDefault();
-    authenticationController.logout();
-    router.routeTo('home');
-  });
+  $('#footerResults').on('click', '#logout-button', logout);
 };
 
 $(document).ready(init);
