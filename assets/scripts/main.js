@@ -70,51 +70,6 @@ $('#cmsResults').on('click', '.project-update', function(event) {
 //////////////////////////////////////////////
 
 //////////////////////////////////////////////
-// BEGIN: hitting the update's submit button
-//////////////////////////////////////////////
-
-$('#cmsResults').on('click', '#edit-project-submit', function(event) {
-  var $project = $(this).closest('.entire-project');
-  $.ajax(server + '/projects/' + $project.data('id'), {
-    contentType: 'application/json',
-    processData: false,
-    method: 'PUT',
-    data: JSON.stringify({
-      project: {
-        title: $project.find('.edit-project-title').val(),
-        imageURL_sm: $project.find('.edit-project-imageURL_sm').val(),
-        imageURL_lg: $project.find('.edit-project-imageURL_lg').val(),
-        siteURL: $project.find('.edit-project-siteURL').val(),
-        codeURL: $project.find('.edit-project-codeURL').val(),
-        description: $project.find('.edit-project-description').val(),
-        category: $project.find('.edit-project-category').val()
-      }
-    }),
-    headers: {
-      Authorization: 'Token token=' + simpleStorage.get('token')
-    }
-  }).done(function(data, textStatus, jqxhr){
-    var project = data.project;
-    $project.find('.title.project-show').html('').append(data.project.title);
-    $project.find('.imageURL_sm.project-show').html('').append(data.project.imageURL_sm);
-    $project.find('.imageURL_lg.project-show').html('').append(data.project.imageURL_lg);
-    $project.find('.siteURL.project-show').html('').append(data.project.siteURL);
-    $project.find('.codeURL.project-show').html('').append(data.project.codeURL);
-    $project.find('.description.project-show').html('').append(data.project.description);
-    $project.find('.category.project-show').html('').append(data.project.category);
-
-    $project.find('.edit-form').hide();
-    $project.find('.project-show').show();
-  }).fail(function(jqxhr, textStatus, errorThrown){
-    alert('Unable to update a project.');
-  });
-});
-
-//////////////////////////////////////////////
-// END: hitting the update's submit button
-//////////////////////////////////////////////
-
-//////////////////////////////////////////////
 // BEGIN: hitting the update's cancel button
 //////////////////////////////////////////////
 

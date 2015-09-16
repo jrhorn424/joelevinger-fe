@@ -80,9 +80,36 @@ controller.create = function() {
     }
   }).done(function(response){
     // TODO: WHICH TEMPLATE?
-    $('#appended-projects').append(renderProjects(response.project)); // LOOK HERE FIRST
+    $('#appended-projects').append(renderProjects(response.project));
     $('#projectForm').children('input').val('');
     $('#projectForm').children('textarea').val('');
+  }).fail(function(jqxhr){
+    console.error(jqxhr);
+  });
+};
+
+controller.update = function (id, $project, success) {
+  $.ajax(apiServer + '/projects/' + id, {
+    contentType: 'application/json',
+    processData: false,
+    method: 'PUT',
+    data: JSON.stringify({
+      project: {
+        title: $project.find('.edit-project-title').val(),
+        imageURL_sm: $project.find('.edit-project-imageURL_sm').val(),
+        imageURL_lg: $project.find('.edit-project-imageURL_lg').val(),
+        siteURL: $project.find('.edit-project-siteURL').val(),
+        codeURL: $project.find('.edit-project-codeURL').val(),
+        description: $project.find('.edit-project-description').val(),
+        category: $project.find('.edit-project-category').val()
+      }
+    }),
+    headers: {
+      Authorization: 'Token token=' + simpleStorage.get('token')
+    }
+  }).done(function(data){
+    var project = data.project;
+    success(project);
   }).fail(function(jqxhr){
     console.error(jqxhr);
   });
