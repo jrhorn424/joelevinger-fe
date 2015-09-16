@@ -8,12 +8,6 @@
 </head>
 <body>
 
-<!--
-************************************************
-* BEGIN: header
-************************************************
- -->
-
   <div id="header">
     <div id="logo">
       <a href="#" class="logo">
@@ -25,18 +19,6 @@
       <li id="contact"><a class="aheader" href="#">Contact Me</a></li>
     </ul>
   </div>
-
-<!--
-************************************************
-* END: header
-************************************************
- -->
-
-<!--
-************************************************
-* BEGIN: Home page
-************************************************
--->
 
   <div id="homepage">
     <div id="introtext">
@@ -52,18 +34,6 @@
     <p class="whitespace"></p>
   </div>
 
-<!--
-************************************************
-* END: Home page
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: About Me page
-************************************************
--->
-
   <div id="aboutmepage">
     <div class="contentwrapper">
       <p><img class="right imagenolink" src="http://joelevinger.s3-us-west-2.amazonaws.com/images/joe.jpg">Husband, Dad, Photographer, Hammered Dulcimer Player, Aspiring Web Developer...</p>
@@ -78,18 +48,6 @@
       </ul>
     </div>
   </div>
-
-<!--
-************************************************
-* END: About Me page
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: Contact Me page
-************************************************
--->
 
   <div id="contactmepage">
     <div class="centerpage">
@@ -111,293 +69,25 @@
     </div>
   </div>
 
-<!--
-************************************************
-* END: Contact Me page
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: Show page
-************************************************
--->
-
   <div id="detailpage">
     <div id="showpageResults"></div>
     <p class="whitespace"></p>
   </div>
 
-
-<!--
-************************************************
-* END: Show page
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: Login page
-************************************************
--->
-
-  <div id="loginpage">
-    <p>Please log in: </p>
-    <div>
-      <label for="emailLogin">Email:</label>
-      <input type="text" name="email" id="email">
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password">
-    </div>
-    <button class="login" id="login">Submit</button>
-  </div>
-
-<!--
-************************************************
-* END: Login page
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: CMS page
-************************************************
--->
+  <div id="loginpage"></div>
 
   <div id="cmspage">
     <p class="centerHeader">Projects:</p>
     <div id="cmsResults"></div>
-    <div id="projectForm">
-      <p class="centerHeader">Submit a project:</p>
-      <label for="title">TITLE:</label>
-      <input type="text" name="title" class="projectForm" id ="project-title">
-      <label for="category">CATEGORY:</label>
-      <input type="text" name="category" class="projectForm" id ="project-category">
-      <label for="imageURL_sm">SMALL IMAGE URL:</label>
-      <input type="text" name="imageURL_sm" class="projectForm" id ="project-imageURL_sm">
-      <label for="imageURL_lg">LARGE IMAGE URL:</label>
-      <input type="text" name="imageURL_lg" class="projectForm" id ="project-imageURL_lg">
-      <label for="siteURL">SITE URL:</label>
-      <input type="text" name="siteURL" class="projectForm" id ="project-siteURL">
-      <label for="codeURL">CODE URL:</label>
-      <input type="text" name="codeURL" class="projectForm" id ="project-codeURL">
-      <label for="body">DESCRIPTION:</label>
-      <textarea rows="4" cols="50" name="description" class="projectForm" id="project-description"></textarea>
-      <p>
-        <button id="project-submit">Submit</button>
-      </p>
-    </div>
-    <p class="whitespace"></p>
+    <div id="projectForm"></div>
   </div>
 
-<!--
-************************************************
-* END: CMS page
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: footer
-************************************************
--->
-
   <footer>
-    <a id="login-button" class="nodecoration" href="#">&copy;</a>
-    Joe Levinger 2015
+    <div id="footerResults"></div>
   </footer>
 
-<!--
-************************************************
-* END: footer
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: templates
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: Home page template
-************************************************
--->
-
-  <script id="homepage-template" type="text/x-handlebars-template">
-    <div id="homepage-projects" class="container">
-      {{#each projects}}
-        <div class="entire-homepage-project" data-id="{{this.id}}">
-          <a href="#" id="project{{this.id}}" data-id="{{this.id}}" class="showOneProject">
-            <p class="nospace imageborder" data-id="{{this.id}}">
-              <img class="image" src="http://joelevinger.s3-us-west-2.amazonaws.com/{{this.imageURL_sm}}">
-            </p>
-          </a>
-        </div>
-      {{/each}}
-    </div>
-  </script>
-
-<!--
-************************************************
-* END: Home page template
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: CMS template
-************************************************
--->
-
-  <script id="cms-template" type="text/x-handlebars-template">
-    <div id="appended-projects">
-      {{#each projects}}
-      <div class="entire-project" data-id="{{this.id}}">
-        <p>
-          <span>TITLE: </span>
-          <span class="project title project-show" data-id="{{this.id}}">{{this.title}}</span>
-          <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
-        </p>
-        <p class="indent">
-          <span>CATEGORY: </span>
-          <span class="category project-show">{{this.category}}</span>
-          <input name="category" type="text" class="edit-form edit-project-category" style="display:none;">
-        </p>
-        <p class="indent">
-          <span>SMALL IMAGE: </span>
-          <span class="imageURL_sm project-show">{{this.imageURL_sm}}</span>
-          <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
-        </p>
-        <p class="indent">
-          <span>LARGE IMAGE: </span>
-          <span class="imageURL_lg project-show">{{this.imageURL_lg}}</span>
-          <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
-        </p>
-        <p class="indent">
-          <span>WEBSITE: </span>
-          <span class="siteURL project-show">{{this.siteURL}}</span>
-          <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
-        </p>
-        <p class="indent">
-          <span>CODE REPO: </span>
-          <span class="codeURL project-show">{{this.codeURL}}</span>
-          <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
-        </p>
-        <p class="indent">
-          <span>DESCRIPTION: </span>
-          <span class="description project-show">{{this.description}}</span>
-          <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
-        </p>
-        <button id="edit-project-submit" style="display: none;" class="indent edit-form">Submit Edits</button>
-        <button id="edit-project-cancel" style="display: none;" class="indent edit-form">Cancel</button>
-        <a id="project-update" class="project-update" href="#">
-          <p class="indent displayDeleteUpdateLinks project-show">edit</p>
-        </a>
-        <a data-id="{{this.id}}"class="project-update-delete" href="#">
-          <p class="indent displayDeleteUpdateLinks project-show">delete</p>
-        </a>
-      </div>
-      {{/each}}
-    </div>
-  </script>
-
-<!--
-************************************************
-* END: CMS template
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: Projects template
-************************************************
--->
-
-  <script id="projects" type="text/x-handlebars-template">
-    <div class="entire-project" data-id="{{project.id}}">
-      <p class="project title project-show" data-id="{{project.id}}">{{project.title}}</p>
-      <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
-      <p class="indent category project-show">{{project.category}}</p>
-      <input name="category" type="text" class="edit-form edit-project-category" style="display:none;">
-      <p class="indent imageURL_sm project-show">{{project.imageURL_sm}}</p>
-      <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
-      <p class="indent imageURL_lg project-show">{{project.imageURL_lg}}</p>
-      <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
-      <p class="indent siteURL project-show">{{project.siteURL}}</p>
-      <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
-      <p class="indent codeURL project-show">{{project.codeURL}}</p>
-      <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
-      <p class="indent description project-show">{{project.description}}</p>
-      <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
-      <button id="edit-project-submit" style="display: none;" class="edit-form">Submit Edits</button>
-      <button id="edit-project-cancel" style="display: none;" class="edit-form">Cancel</button>
-      <a class="project-update" href="#">
-        <p class="indent displayDeleteUpdateLinks project-show">edit</p>
-      </a>
-      <a data-id="{{project.id}}" class="project-update-delete" href="#">
-        <p class="indent displayDeleteUpdateLinks project-show">delete</p>
-      </a>
-    </div>
-  </script>
-
-<!--
-************************************************
-* END: Projects template
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: Show page template
-************************************************
--->
-
-  <script id="show-page" type="text/x-handlebars-template">
-    <div id="showpage-photo">
-      <p class="detailtitle">{{title}}</p>
-      <p><img class="showimg" src="http://joelevinger.s3-us-west-2.amazonaws.com/{{imageURL_lg}}"></p>
-      <p><span class="bold">Website: </span><a href="{{siteURL}}" class="sitelinks" target="_blank">{{siteURL}}</a></p>
-      <p><span class="bold">Code Repo: </span><a href="{{codeURL}}" class="sitelinks" target="_blank">{{codeURL}}</a></p>
-      {{{description}}}
-    </div>
-  </script>
-
-<!--
-************************************************
-* END: Show page template
-************************************************
--->
-
-<!--
-************************************************
-* END: templates
-************************************************
--->
-
-<!--
-************************************************
-* BEGIN: scripts
-************************************************
--->
-
-  <script src="node_modules/jquery/dist/jquery.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="node_modules/handlebars/dist/handlebars.js"></script>
-  <script src="node_modules/simplestorage.js/simpleStorage.js"></script>
-  <script src="assets/scripts/view.js" defer charset="utf-8"></script>
-  <script src="assets/scripts/ajaxapicalls.js" defer charset="utf-8"></script>
-  <script src="assets/scripts/showpage.js" defer charset="utf-8"></script>
-  <script src="assets/scripts/main.js" defer charset="utf-8"></script>
-
-<!--
-************************************************
-* END: scripts
-************************************************
--->
+  <script src="vendor.bundle.js" defer charset="utf-8"></script>
+  <script src="bundle.js" defer charset="utf-8"></script>
 
 </body>
 </html>

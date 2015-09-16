@@ -7,10 +7,10 @@ var apiServer = require('../config').apiServer;
 var getProject = require('./show');
 var router = require('../router');
 
-var renderCms = require('../../templates/dashboard/list.handlebars');
-var renderHome = require('../../templates/gallery.handlebars');
-var renderProjects = require('../../templates/projects.handlebars');
-var renderProject = require('../../templates/detail.handlebars');
+var renderCms = require('../dashboard/list.handlebars');
+var renderHome = require('./gallery.handlebars');
+var renderProjects = require('../dashboard/project.handlebars');
+var renderProject = require('../projects/detail.handlebars');
 
 var controller = {};
 
@@ -19,10 +19,9 @@ controller.index = function() {
     url: apiServer + '/projects/',
     method: 'GET'
   }).done(function(response){
-    // TODO: use in-memory storage for project index
     $('#cmsResults').html(renderCms(response));
     $('#homepageResults').html(renderHome(response));
-    getProject();
+    controller.show();
   }).fail(function(err){
     console.error(err);
   });
@@ -33,17 +32,17 @@ controller.filterByCategory = function (category) {
     url: apiServer + '/projects/',
     method: 'GET'
   }).done(function(response){
-    $.grep(response.projects, function(e) { return e.category === category; });
-    $('#homepageResults').html(renderHome(response));
+    var categoryProjects = $.grep(response.projects, function(e) { return e.category === category; });
+    $('#homepageResults').html(renderHome({
+      projects: categoryProjects
+    }));
   }).fail(function(err){
     console.error(err);
   });
 };
 
-// TODO: fix document ready inside modules
-var show = function() {
+controller.show = function() {
   $('#homepageResults').on('click', '.showOneProject', function() {
-    console.log('in the AJAX call to retrieve one project');
     $.ajax({
       url: apiServer + '/projects/' + $(this).data('id'),
       method: 'GET',
@@ -59,7 +58,7 @@ var show = function() {
   });
 };
 
-controller.create = function() {;
+controller.create = function() {
   $.ajax(apiServer + '/projects/', {
     contentType: 'application/json',
     processData: false,
@@ -80,7 +79,6 @@ controller.create = function() {;
       Authorization: 'Token token=' + simpleStorage.get('token')
     }
   }).done(function(response){
-    // TODO: WHICH TEMPLATE?
     $('#appended-projects').append(renderProjects(response.project));
     $('#projectForm').children('input').val('');
     $('#projectForm').children('textarea').val('');
@@ -89,8 +87,50 @@ controller.create = function() {;
   });
 };
 
+controller.update = function (id, $project, success) {
+  $.ajax(apiServer + '/projects/' + id, {
+    contentType: 'application/json',
+    processData: false,
+    method: 'PUT',
+    data: JSON.stringify({
+      project: {
+        title: $project.find('.edit-project-title').val(),
+        imageURL_sm: $project.find('.edit-project-imageURL_sm').val(),
+        imageURL_lg: $project.find('.edit-project-imageURL_lg').val(),
+        siteURL: $project.find('.edit-project-siteURL').val(),
+        codeURL: $project.find('.edit-project-codeURL').val(),
+        description: $project.find('.edit-project-description').val(),
+        category: $project.find('.edit-project-category').val()
+      }
+    }),
+    headers: {
+      Authorization: 'Token token=' + simpleStorage.get('token')
+    }
+  }).done(function(data){
+    var project = data.project;
+    success(project);
+  }).fail(function(jqxhr){
+    console.error(jqxhr);
+  });
+};
+
+controller.delete = function (id, success) {
+  $.ajax(apiServer + '/projects/' + id, {
+    contentType: 'application/json',
+    processData: false,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + simpleStorage.get('token')
+    }
+  }).done(function() {
+    success();
+  }).fail(function(jqxhr) {
+    console.error(jqxhr);
+  });
+};
+
 $(document).ready(function () {
-  $('#project-submit').on('click', controller.create);
+  $('#projectForm').on('click', '#project-submit', controller.create);
 });
 
 module.exports = controller;

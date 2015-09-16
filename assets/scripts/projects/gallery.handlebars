@@ -1,0 +1,13 @@
+{{!-- This is the template for displaying the images representing the projects on the Index page (aka the "Home" page. --}}
+
+<div id="homepage-projects" class="container">
+  {{#each projects}}
+  <div class="entire-homepage-project" data-id="{{id}}">
+    <a href="#" id="project{{id}}" data-id="{{id}}" class="showOneProject">
+      <p class="nospace imageborder" data-id="{{id}}">
+        <img class="image" src="assets/{{imageURL_sm}}">
+      </p>
+    </a>
+  </div>
+  {{/each}}
+</div>

@@ -1,0 +1,18 @@
+{
+  "options": {
+    "js": {
+      "indent_size": 2
+    }
+  },
+
+  "status": {
+    "src": ["<%= paths.js %>"],
+    "options": {
+      "mode": "VERIFY_ONLY"
+    }
+  },
+
+  "write": {
+    "src": ["<%= paths.js %>"]
+  }
+}

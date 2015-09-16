@@ -1,0 +1,51 @@
+{{!-- This template is formatting all of the CMS page's projects. Notice that the "entire-project" div on line 5-49 corresponds exactly to the template in the "projects.handlebars" file. We need this redundancy because the "entire-project" div is used by Handlebars to print one project until all of the projects have been printed (through the "each projects" loop), whereas the template in the "projects.handlebars" file is needed to format an individual project. --}}
+
+<div id="appended-projects">
+  {{#each projects}}
+  <div class="entire-project" data-id="{{id}}">
+    <p>
+      <span>TITLE: </span>
+      <span class="project title project-show" data-id="{{id}}">{{title}}</span>
+      <input name="title" type="text" class="edit-form edit-project-title" style="display:none;">
+    </p>
+    <p class="indent">
+      <span>CATEGORY: </span>
+      <span class="category project-show">{{category}}</span>
+      <input name="category" type="text" class="edit-form edit-project-category" style="display:none;">
+    </p>
+    <p class="indent">
+      <span>SMALL IMAGE: </span>
+      <span class="imageURL_sm project-show">{{imageURL_sm}}</span>
+      <input name="imageURL_sm" type="text" class="edit-form edit-project-imageURL_sm" style="display:none;">
+    </p>
+    <p class="indent">
+      <span>LARGE IMAGE: </span>
+      <span class="imageURL_lg project-show">{{imageURL_lg}}</span>
+      <input name="imageURL_lg" type="text" class="edit-form edit-project-imageURL_lg" style="display:none;">
+    </p>
+    <p class="indent">
+      <span>WEBSITE: </span>
+      <span class="siteURL project-show">{{siteURL}}</span>
+      <input name="siteURL" type="text" class="edit-form edit-project-siteURL" style="display:none;">
+    </p>
+    <p class="indent">
+      <span>CODE REPO: </span>
+      <span class="codeURL project-show">{{codeURL}}</span>
+      <input name="codeURL" type="text" class="edit-form edit-project-codeURL" style="display:none;">
+    </p>
+    <p class="indent">
+      <span>DESCRIPTION: </span>
+      <span class="description project-show">{{description}}</span>
+      <textarea class="edit-form edit-project-description" style="display:none;"></textarea>
+    </p>
+    <button id="edit-project-submit" style="display: none;" class="indent edit-form">Submit Edits</button>
+    <button id="edit-project-cancel" style="display: none;" class="indent edit-form">Cancel</button>
+    <a id="project-update" class="project-update" href="#">
+      <p class="indent displayDeleteUpdateLinks project-show">edit</p>
+    </a>
+    <a data-id="{{id}}"class="project-update-delete" href="#">
+      <p class="indent displayDeleteUpdateLinks project-show">delete</p>
+    </a>
+  </div>
+  {{/each}}
+</div>
