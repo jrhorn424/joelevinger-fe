@@ -32,8 +32,10 @@ controller.filterByCategory = function (category) {
     url: apiServer + '/projects/',
     method: 'GET'
   }).done(function(response){
-    $.grep(response.projects, function(e) { return e.category === category; });
-    $('#homepageResults').html(renderHome(response));
+    var categoryProjects = $.grep(response.projects, function(e) { return e.category === category; });
+    $('#homepageResults').html(renderHome({
+      projects: categoryProjects
+    }));
   }).fail(function(err){
     console.error(err);
   });
@@ -42,7 +44,6 @@ controller.filterByCategory = function (category) {
 // TODO: fix document ready inside modules
 controller.show = function() {
   $('#homepageResults').on('click', '.showOneProject', function() {
-    console.log('in the AJAX call to retrieve one project');
     $.ajax({
       url: apiServer + '/projects/' + $(this).data('id'),
       method: 'GET',
@@ -59,7 +60,6 @@ controller.show = function() {
 };
 
 controller.create = function() {
-  console.log('about to execute the AJAX request to create a project');
   $.ajax(apiServer + '/projects/', {
     contentType: 'application/json',
     processData: false,
@@ -81,7 +81,6 @@ controller.create = function() {
     }
   }).done(function(response){
     // TODO: WHICH TEMPLATE?
-    debugger;
     $('#appended-projects').append(renderProjects(response.project)); // LOOK HERE FIRST
     $('#projectForm').children('input').val('');
     $('#projectForm').children('textarea').val('');

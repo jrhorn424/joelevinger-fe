@@ -29,9 +29,15 @@ var init = function () {
 $(document).ready(function() {
   init();
   $('#projectForm').html(renderProjectForm());
-  $('#js').on('click', projectsController.filterByCategory('js'));
-  $('#ruby').on('click', projectsController.filterByCategory('ruby'));
-  $('#all').on('click', projectsController.index());
+  $('#js').on('click', function() {
+    projectsController.filterByCategory('js');
+  });
+  $('#ruby').on('click', function() {
+    projectsController.filterByCategory('ruby');
+  });
+  $('#all').on('click', function() {
+    projectsController.index();
+  });
 
 //////////////////////////////////////////////
 // BEGIN: delete a project
@@ -39,7 +45,6 @@ $(document).ready(function() {
 
   $('#cmsResults').on('click', '.project-update-delete', function(event) {
     event.preventDefault();
-    console.log('in the delete function');
     var entireProjectElement = this.parentElement;
     $.ajax(server + '/projects/' + $(this).data('id'), {
       contentType: 'application/json',
@@ -92,7 +97,6 @@ $('#cmsResults').on('click', '.project-update', function(event) {
 //////////////////////////////////////////////
 
 $('#cmsResults').on('click', '#edit-project-submit', function(event) {
-  console.log("just hit the update's submit button");
   var $project = $(this).closest('.entire-project');
   $.ajax(server + '/projects/' + $project.data('id'), {
     contentType: 'application/json',
