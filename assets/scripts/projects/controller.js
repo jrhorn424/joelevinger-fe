@@ -18,7 +18,6 @@ controller.index = function() {
     url: apiServer + '/projects/',
     method: 'GET'
   }).done(function(response){
-    // TODO: use in-memory storage for project index
     $('#cmsResults').html(renderCms(response));
     $('#homepageResults').html(renderHome(response));
     controller.show();
@@ -85,6 +84,21 @@ controller.create = function() {
     $('#projectForm').children('input').val('');
     $('#projectForm').children('textarea').val('');
   }).fail(function(jqxhr){
+    console.error(jqxhr);
+  });
+};
+
+controller.delete = function (id, success) {
+  $.ajax(apiServer + '/projects/' + id, {
+    contentType: 'application/json',
+    processData: false,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + simpleStorage.get('token')
+    }
+  }).done(function() {
+    success();
+  }).fail(function(jqxhr) {
     console.error(jqxhr);
   });
 };

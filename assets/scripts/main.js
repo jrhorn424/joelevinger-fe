@@ -13,10 +13,12 @@ var router = require('./router');
 // templates
 var renderProjectForm = require('./projects/create.handlebars');
 var renderFooter = require('./components/footer.handlebars');
+var renderHome = require('./projects/gallery.handlebars');
 
 // modules evaluated for side-effects
 require('./components/logo');
 require('./components/login');
+require('./dashboard/index');
 
 var init = function () {
   projectsController.index();
@@ -38,31 +40,6 @@ $(document).ready(function() {
   $('#all').on('click', function() {
     projectsController.index();
   });
-
-//////////////////////////////////////////////
-// BEGIN: delete a project
-//////////////////////////////////////////////
-
-  $('#cmsResults').on('click', '.project-update-delete', function(event) {
-    event.preventDefault();
-    var entireProjectElement = this.parentElement;
-    $.ajax(server + '/projects/' + $(this).data('id'), {
-      contentType: 'application/json',
-      processData: false,
-      method: 'DELETE',
-      headers: {
-        Authorization: 'Token token=' + simpleStorage.get('token')
-      }
-    }).done(function() {
-      $(entireProjectElement).remove();
-    }).fail(function(jqxhr, textStatus, errorThrown) {
-      alert('Unable to delete a project.');
-    });
-  });
-
-//////////////////////////////////////////////
-// END: delete a project
-//////////////////////////////////////////////
 
 });
 
