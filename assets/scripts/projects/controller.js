@@ -4,7 +4,6 @@ var $ = require('jquery');
 var simpleStorage = require('simplestorage.js');
 
 var apiServer = require('../config').apiServer;
-var getProject = require('./show');
 var router = require('../router');
 
 var renderCms = require('../dashboard/list.handlebars');
