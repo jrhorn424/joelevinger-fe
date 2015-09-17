@@ -19,6 +19,8 @@ var renderHome = require('./projects/gallery.handlebars');
 require('./components/logo');
 require('./components/login');
 require('./dashboard/index');
+require('./components/about');
+require('./components/contact');
 
 var init = function () {
   projectsController.index();

@@ -21,6 +21,8 @@ router.routeTo = function (view) {
 
 router.routes = {
   'home': $('#homepage'),
+  'about': $('#aboutpage'),
+  'contact': $('#contactpage'),
   'login': $('#loginpage'),
   'cms': $('#cmspage'),
   'project': $('#detailpage')
