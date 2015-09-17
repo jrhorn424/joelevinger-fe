@@ -1,6 +1,5 @@
-{{!-- This template is formatting all of the CMS page's projects. Notice that the "entire-project" div on line 5-49 corresponds exactly to the template in the "projects.handlebars" file. We need this redundancy because the "entire-project" div is used by Handlebars to print one project until all of the projects have been printed (through the "each projects" loop), whereas the template in the "projects.handlebars" file is needed to format an individual project. --}}
-
 <div id="appended-projects">
+  <p class="centerHeader">Projects</p>
   {{#each projects}}
   <div class="entire-project" data-id="{{id}}">
     <p>
